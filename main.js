@@ -1,7 +1,7 @@
 import * as THREE  from "./build/three.module.js";
 import { OrbitControls } from "./controls/OrbitControls.js"
 
-let scene, camera, renderer, pointLight, orbitControls;
+let scene, camera, renderer, pointLight, orbitControls, rectangleBox;
 
 window.addEventListener("load", init);
 
@@ -29,8 +29,8 @@ function init() {
     clearcoat: 1,
     metalness: 0.5
   });
-
-  const rectangleBox = new THREE.Mesh(new THREE.BoxGeometry (20, 0.2, 20), material);
+  
+  rectangleBox = new THREE.Mesh(new THREE.BoxGeometry (20, 0.2, 20), material);
   rectangleBox.receiveShadow = true;
   scene.add(rectangleBox);
 
@@ -56,6 +56,7 @@ function init() {
   orbitControls = new OrbitControls(camera, renderer.domElement);
   orbitControls.enableDamping = true;
   orbitControls.dampingFactor = 0.2;
+  
   animate();
 };
 
@@ -65,6 +66,8 @@ const animate = () =>{
     200 * Math.sin(Date.now() / 700),
     200 * Math.cos(Date.now() / 500),
   );
+
+	rectangleBox.rotation.y += -0.02;
 
   orbitControls.update();
   requestAnimationFrame(animate);
