@@ -46,6 +46,9 @@ function init() {
   pointLight.shadow.mapSize.height = 2048;
   scene.add(pointLight);
   
+  // const pointLightHelper = new THREE.PointLightHelper(pointLight, 30);
+  // scene.add(pointLightHelper);
+
   const directionalLight = new THREE.DirectionalLight(0x0fffff, 1);
   directionalLight.position.set(1, 1, 1);
   scene.add(directionalLight);
