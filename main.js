@@ -19,6 +19,8 @@ function init() {
   document.body.appendChild(renderer.domElement);
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   const material = new THREE.MeshPhysicalMaterial({
     color: 808080,
@@ -27,15 +29,20 @@ function init() {
     metalness: 0.5
   });
 
-  const rectangleBox = new THREE.Mesh(new THREE.BoxGeometry (15, 0.5, 15), material);
+  const rectangleBox = new THREE.Mesh(new THREE.BoxGeometry (20, 0.2, 20), material);
+  rectangleBox.receiveShadow = true;
   scene.add(rectangleBox);
 
   const sphere = new THREE.Mesh (new THREE.SphereGeometry(2, 36, 30), material);
-  sphere.position.set(0, 2, 0);
+  sphere.position.set(0, 5, 0);
+  sphere.castShadow = true;
   scene.add(sphere);
 
   pointLight = new THREE.PointLight(0xfffff, 2);
   pointLight.position.set(50, 50, 50);
+  pointLight.castShadow = true;
+  pointLight.shadow.mapSize.width = 2048;
+  pointLight.shadow.mapSize.height = 2048;
   scene.add(pointLight);
 
   animate();
