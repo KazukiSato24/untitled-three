@@ -14,7 +14,7 @@ function init() {
     3000
   );
 
-  camera.position.set(0, 5, 20);
+  camera.position.set(0, 5, 30);
   renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true});
   document.body.appendChild(renderer.domElement);
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -23,6 +23,10 @@ function init() {
 
   const rectangleBox = new THREE.Mesh(new THREE.BoxGeometry (15, 0.5, 15), material);
   scene.add(rectangleBox);
+
+  const sphere = new THREE.Mesh (new THREE.SphereGeometry(2, 36, 30), material);
+  sphere.position.set(0, 2, 0);
+  scene.add(sphere);
 
   renderer.render(scene, camera);
 };
