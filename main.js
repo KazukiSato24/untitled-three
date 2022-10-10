@@ -20,5 +20,8 @@ function init() {
 
   const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
 
+  const rectangleBox = new THREE.Mesh(new THREE.BoxGeometry (5, 1, 1), material);
+  scene.add(rectangleBox);
+
   renderer.render(scene, camera);
 };
