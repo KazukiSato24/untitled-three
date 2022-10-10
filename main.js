@@ -16,5 +16,5 @@ function init() {
   document.body.appendChild(renderer.domElement);
   renderer.setSize(Window.innerWidth, window.innerHeight);
 
-  renderer.add(scene, camera);
+  renderer.render(scene, camera);
 };
