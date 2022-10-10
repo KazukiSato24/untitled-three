@@ -14,15 +14,14 @@ function init() {
     3000
   );
 
-  camera.position.set(0, 0, 20);
-
-  renderer = new THREE.WebGLRenderer();
+  camera.position.set(0, 5, 20);
+  renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true});
   document.body.appendChild(renderer.domElement);
   renderer.setSize(window.innerWidth, window.innerHeight);
 
   const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
 
-  const rectangleBox = new THREE.Mesh(new THREE.BoxGeometry (5, 1, 1), material);
+  const rectangleBox = new THREE.Mesh(new THREE.BoxGeometry (15, 0.5, 15), material);
   scene.add(rectangleBox);
 
   renderer.render(scene, camera);
