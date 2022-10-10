@@ -15,7 +15,7 @@ function init() {
     3000
   );
 
-  camera.position.set(0, 5, 30);
+  camera.position.set(20, 15, 40);
   renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true});
   document.body.appendChild(renderer.domElement);
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -47,6 +47,8 @@ function init() {
   scene.add(pointLight);
 
   orbitControls = new OrbitControls(camera, renderer.domElement);
+  orbitControls.enableDamping = true;
+  orbitControls.dampingFactor = 0.2;
   animate();
 };
 
@@ -57,6 +59,7 @@ const animate = () =>{
     200 * Math.cos(Date.now() / 500),
   );
 
+  orbitControls.update();
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 };
