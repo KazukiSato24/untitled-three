@@ -24,7 +24,7 @@ function init() {
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   const material = new THREE.MeshPhysicalMaterial({
-    color: 808080,
+    color: 0X998877,
     roughness: 0,
     clearcoat: 1,
     metalness: 0.5
@@ -45,6 +45,10 @@ function init() {
   pointLight.shadow.mapSize.width = 2048;
   pointLight.shadow.mapSize.height = 2048;
   scene.add(pointLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0x0fffff, 1);
+  directionalLight.position.set(1, 1, 1);
+  scene.add(directionalLight);
 
   orbitControls = new OrbitControls(camera, renderer.domElement);
   orbitControls.enableDamping = true;
