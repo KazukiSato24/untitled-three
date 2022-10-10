@@ -1,6 +1,6 @@
 import * as THREE  from "./build/three.module.js";
 
-let scene, camera, renderer;
+let scene, camera, renderer, pointLight;
 
 window.addEventListener("load", init);
 
@@ -33,6 +33,21 @@ function init() {
   const sphere = new THREE.Mesh (new THREE.SphereGeometry(2, 36, 30), material);
   sphere.position.set(0, 2, 0);
   scene.add(sphere);
-  
+
+  pointLight = new THREE.PointLight(0xfffff, 2);
+  pointLight.position.set(50, 50, 50);
+  scene.add(pointLight);
+
+  animate();
+};
+
+const animate = () =>{
+  pointLight.position.set(
+    200 * Math.sin(Date.now() / 500),
+    200 * Math.sin(Date.now() / 700),
+    200 * Math.cos(Date.now() / 500),
+  );
+
+  requestAnimationFrame(animate);
   renderer.render(scene, camera);
 };
