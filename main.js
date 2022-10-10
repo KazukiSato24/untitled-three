@@ -1,6 +1,7 @@
 import * as THREE  from "./build/three.module.js";
+import { OrbitControls } from "./controls/OrbitControls.js"
 
-let scene, camera, renderer, pointLight;
+let scene, camera, renderer, pointLight, orbitControls;
 
 window.addEventListener("load", init);
 
@@ -45,6 +46,7 @@ function init() {
   pointLight.shadow.mapSize.height = 2048;
   scene.add(pointLight);
 
+  orbitControls = new OrbitControls(camera, renderer.domElement);
   animate();
 };
 
